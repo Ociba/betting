@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import slideImage1 from "./hero-2.jpg";
+import slideImage2 from "./hero-1.jpg";
 import {Switch, Link} from 'react-router-dom';
 
 function Home() {
@@ -44,9 +45,9 @@ function Home() {
                     </aside>
                 </div>
                 <div class="col-xl-8 col-lg-8 col-md-6 col-sm-6">
-                <img src="assets/images/banner/hero-2.jpg" alt=""/> 
+                   <img src="assets/images/banner/hero-2.jpg" alt=""/>
                     <div class="main-content-slider owl-carousel">
-                        <div class="single-slider"  style={{backgroundImage:"url(" + slideImage1 + ")", backgroundRepeat:'no-repeat'}}>
+                        <div class="single-slider"  styles={{ backgroundImage:`url(${slideImage1})` }}>
                             <div class="row">
                                 <div class="col-xl-6">
                                     <h3>Lever of Soccer</h3>
@@ -58,7 +59,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div class="single-slider">
+                        <div class="single-slider" styles={{ backgroundImage:`url(${slideImage2})` }}>
                             <div class="row">
                                 <div class="col-xl-6">
                                     <h3>Lever of Games</h3>
