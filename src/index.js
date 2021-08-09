@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Route from './Route';
 import reportWebVitals from './reportWebVitals';
-
+//import "assets/css/bootstrap.min.css";
+//import "assets/css/font-awesome.min.css";
+//import "assets/css/animate.css";
+//import "assets/css/jquery-ui.css";
+//import "assets/css/magnific-popup.css";
+//import "assets/css/main.css";
+//import "assets/css/owl.carousel.min.css";
+//import "assets/css/owl.video.play.html";
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Route />
   </React.StrictMode>,
   document.getElementById('root')
 );
