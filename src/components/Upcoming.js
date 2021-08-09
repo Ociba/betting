@@ -1396,6 +1396,75 @@ function Upcomming(){
                 </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+            <div class="web-sidebar-widget">
+                        <div class="widget-head">
+                            <h3>Bet Slip <span class="pull-right">UGX:0000</span></h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="chat-boxed">
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control mb-2" placeholder="Your stake" ></input>
+                                <span>Min stake is 1</span>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                        <h4> Total Odds:<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                    <h4> Win:<span>Sh. 500,000</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                    <h4> Payout:<span>Sh. 475,000</span></h4>
+                                    </div>
+                                </div>
+                                <a href="#sss" class="bttn-small1 btn-fill btn-block text-center w-100">Place Bet</a>
+                            </div>
+                        </div>
+                    </div>
                 <div class="web-sidebar-widget">
                     <div class="widget-head">
                         <h3>Betsb info</h3>

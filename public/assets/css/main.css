@@ -1179,6 +1179,19 @@ img {
     font-family: "Comfortaa", sans-serif;
     text-transform: uppercase;
 }
+.bttn-small1 {
+    position: relative;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 28px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.4s;
+    font-family: "Comfortaa", sans-serif;
+    text-transform: capitalize;
+}
 
 .bttn-mid i, .bttn-small i {
     margin-right: 7px;
@@ -2452,7 +2465,7 @@ Site Sidebar
 
 .web-sidebar-widget .widget-body .chat-boxed .single-chat .chat-text {
     float: left;
-    width: 80%;
+    width: 90%;
 }
 
 .web-sidebar-widget .widget-body .chat-boxed .single-chat .chat-text h4 {
@@ -2470,7 +2483,7 @@ Site Sidebar
 .web-sidebar-widget .widget-body .chat-boxed .single-chat .chat-text p {
     font-size: 10px;
     line-height: initial;
-    margin-bottom: 0;
+    margin-bottom: 1;
 }
 
 .web-sidebar-widget .widget-body .chat-boxed::-webkit-scrollbar-track {
@@ -2704,9 +2717,24 @@ Site Sidebar
     box-shadow: 0px 7px 20px -14px rgba(34, 54, 60, 0.74);
     margin-top: 10px;
 }
-
+.game-box .card .card-body table tr td .btnn:hover {
+    background-color: #FDD50B;
+    padding: 3px 17px;
+}
+.game-box .card .card-body table tr td .btnn:active {
+    background-color: #0bfd1f;
+    padding: 3px 17px;
+}
+.game-box .card .card-body table tr td .btnn:focus {
+    background-color: #0bfd1f;
+    padding: 3px 17px;
+}
 .game-box .card .card-body table tr td a img {
     margin-top: 15px;
+}
+.del {
+    color: #ffffff;
+   
 }
 
 /* Content center */

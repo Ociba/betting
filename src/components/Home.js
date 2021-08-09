@@ -1,11 +1,38 @@
-import React from 'react';
-import {Table} from 'react-bootstrap';
+import React,{Component} from 'react';
+import {Table, Button} from 'react-bootstrap';
 import slideImage1 from "./hero-2.jpg";
 import slideImage2 from "./hero-1.jpg";
 import {Switch, Link} from 'react-router-dom';
+import axios from 'axios'
 
-function Home() {
-    return <section>
+class Home extends Component {
+    constructor(props){
+        super(props)
+        this.state ={
+           items :[]
+        }
+        this.handleDelete =this.handleDelete.bind(this);
+      }
+    
+      componentDidMount(){
+        this.getData();
+      }
+       getData(){
+           axios.get('http://localhost:8000/api/get-premier-league').then(response => {this.setState({
+          items:response.data
+      })
+    })
+    }
+    handleDelete(e){
+      e.preventDefault();
+      const id =e.target.id.value;
+      axios.delete('http://localhost:8000/api/delete-premier/'+id);
+    
+            this.getData();
+    }
+    render(){
+    return (
+      <section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
@@ -95,12 +122,13 @@ function Home() {
                                   </ul>
                                   <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    {
+                                         this.state.items.length!==0 ?
                                         <div class="table-responsive">
                                             <Table class="table table-hover table-borderless table-striped">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">Date</th>
-                                                    <th scope="col">Logo</th>
                                                     <th scope="col">Teams</th>
                                                     <th scope="col">1</th>
                                                     <th scope="col">3 Way <br />X</th>
@@ -112,425 +140,30 @@ function Home() {
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/1.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/2.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/3.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/4.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/5.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/6.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                </tbody>
-                                            </Table>
-                                        </div>
+                                                  {
+                                                    this.state.items.map((item,i)=>(
+                                                        <tr>
+                                                        <td>{i+1}</td>
+                                                        <td>{item.name}</td>
+                                                        <td>{item.email}</td>
+                                                        <td>{item.phone_number}</td>
+                                                        <td>{item.current_location}</td>
+                                                        <td>
+                                                          <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
+                                                        </td>
+                                                        <td>
+                                                            <form onSubmit={this.handleDelete} >
+                                                            <input type="hidden" name="id" value={item.id}  />
+                                                            <Button type="submit"  className="btn-sm  btn-danger" style={{fontSize:'16px',textTransform: 'capitalize'}}>Delete</Button>
+                                                            </form>
+                                                        </td>
+                                                        </tr>
+                                                        ))}
+                                                    </tbody>
+                                                    </Table> 
+                                     </div>
+                                     : <div> No item added yet!</div>
+                                    }
                                     </div>
                                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="table-responsive">
@@ -538,7 +171,6 @@ function Home() {
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">Date</th>
-                                                    <th scope="col">Logo</th>
                                                     <th scope="col">Teams</th>
                                                     <th scope="col">1</th>
                                                     <th scope="col">3 Way <br />X</th>
@@ -552,330 +184,6 @@ function Home() {
                                                 <tbody>
                                                   <tr>
                                                     <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/1.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/2.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/3.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/4.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/5.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/6.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                         <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
                                                     <td>
                                                         <strong>EC Noroeste SP</strong>
                                                         <strong>Batatais FC SP</strong>
@@ -912,7 +220,6 @@ function Home() {
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">Date</th>
-                                                    <th scope="col">Logo</th>
                                                     <th scope="col">Teams</th>
                                                     <th scope="col">1</th>
                                                     <th scope="col">3 Way <br />X</th>
@@ -927,10 +234,6 @@ function Home() {
                                                   <tr>
                                                     <td>04:15 <br /> 13th Feb</td>
                                                     <td>
-                                                        <img src="assets/images/icons/teams/1.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/2.png" alt=""/>
-                                                    </td>
-                                                    <td>
                                                         <strong>EC Noroeste SP</strong>
                                                         <strong>Batatais FC SP</strong>
                                                     </td>
@@ -951,390 +254,6 @@ function Home() {
                                                     </td>
                                                     <td>
                                                          <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/3.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/4.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/5.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/6.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                          <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                         <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                         <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                         <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                         <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                    <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>04:15 <br /> 13th Feb</td>
-                                                    <td>
-                                                        <img src="assets/images/icons/teams/9.png" alt=""/><br />
-                                                        <img src="assets/images/icons/teams/10.png" alt=""/>
-                                                    </td>
-                                                    <td>
-                                                        <strong>EC Noroeste SP</strong>
-                                                        <strong>Batatais FC SP</strong>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#sss" class="btnn">2.36</a>
                                                     </td>
                                                     <td>
                                                     <Switch><Link to="/morebet" class="btnn">more</Link></Switch>
@@ -1349,7 +268,77 @@ function Home() {
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+                <div class="web-sidebar-widget">
+                        <div class="widget-head">
+                            <h3>Bet Slip <span class="pull-right">UGX:0000</span></h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="chat-boxed">
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                     <p><a href="/#sss" class="del">x</a> Chelsea fc-villareal </p>
+                                        <h4> 1 x 2 - FT (2)<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control mb-2" placeholder="Your stake" ></input>
+                                <span>Min stake is 1</span>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                        <h4> Total Odds:<span>4.75</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                    <h4> Win:<span>Sh. 500,000</span></h4>
+                                    </div>
+                                </div>
+                                <div class="single-chat">
+                                    <div class="chat-text">
+                                    <h4> Payout:<span>Sh. 475,000</span></h4>
+                                    </div>
+                                </div>
+                                <a href="#sss" class="bttn-small1 btn-fill btn-block text-center w-100">Place Bet</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="web-sidebar-widget">
                         <div class="widget-head">
                             <h3>Betsb ads</h3>
@@ -1435,6 +424,8 @@ function Home() {
                 </div>
                 </div>
                 </div>
-            </section>;
+            </section>
+    )
+}
 }
 export default Home;
